@@ -1,0 +1,20 @@
+Name:                c0c
+Version:             0.0
+Synopsis:            C0 Compiler Base Code
+Author: *[Redacted]
+Maintainer: [Redacted]
+Category:            Development
+Build-type:          Simple
+Cabal-version:       >=1.2
+
+Executable c0c
+  Main-Is:        c0c.hs
+  Hs-Source-Dirs: src
+  Build-Depends:  base, filepath, mtl, process, bytestring, syb, containers, 
+                  pretty, transformers, fgl, directory, vector,
+                  semigroups, semigroupoids, profunctors, comonad,
+                  comonad-transformers, heap
+  Extensions:     DeriveDataTypeable, RankNTypes, FlexibleInstances,
+                  MultiParamTypeClasses, FlexibleContexts, ViewPatterns,
+                  DeriveFunctor, TypeFamilies, MonadComprehensions
+  GHC-Options:    -Wall -O3 -rtsopts -with-rtsopts=-K64m

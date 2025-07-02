@@ -1,0 +1,18 @@
+As of L1, we are currently making use of
+the following packages:
+
+base, filepath, mtl, process, bytestring, syb, containers, 
+pretty, transformers, fgl, directory, vector
+
+All algorithms are essentially identical to those discussed in class, bar some slight modifications
+for convenience.
+Most of the design ideas were not ready in time to be used for L1, so most of the code is in the structure
+of the starer code. This will change.
+
+The main design idea we have implemented already is that all Assembly types
+define their own version of used and defined predicates, and in the future we will depend only on 
+those and other predicates.
+
+Currently, the liveness analysis can have a stack overflow on large enough
+programs, as it is using the built in List type. A port to a more efficient data structure
+is in progress, but was not ready in time for today's handin.

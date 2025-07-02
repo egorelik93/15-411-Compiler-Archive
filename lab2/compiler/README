@@ -1,0 +1,49 @@
+-- L2
+
+As of L2, we are currently making use of
+the following packages:
+
+base, filepath, mtl, process, bytestring, syb, containers, 
+pretty, transformers, fgl, directory, vector, heaps
+
+
+We are now using a brand new typechecker, parser, and AST,
+as well as a series of translation steps.
+
+The parser builds a concrete syntax tree that is an exact copy of the grammar.
+The elaboration step converts this CST into the AST.
+
+The typechecker is written with the implementation used in 312.
+
+The AST is based on free monads, as those are an existing infrastructure that
+essentially generalize ASTs. 
+
+We currently bypass a true CodeGen step and
+instead have a series of translations from the AST to the AbstractAssembly.
+While there is a function called codeGen in Translation.hs, it is mostly
+a 1-1 translation at that point, beyond flattening blocks.
+Translation also makes use of an symbol generator monad so that we
+can freely create new temps while translating.
+
+Beyond extensions to support L2, the backend is mostly the same.
+
+-- L1
+
+As of L1, we are currently making use of
+the following packages:
+
+base, filepath, mtl, process, bytestring, syb, containers, 
+pretty, transformers, fgl, directory, vector
+
+All algorithms are essentially identical to those discussed in class, bar some slight modifications
+for convenience.
+Most of the design ideas were not ready in time to be used for L1, so most of the code is in the structure
+of the starer code. This will change.
+
+The main design idea we have implemented already is that all Assembly types
+define their own version of used and defined predicates, and in the future we will depend only on 
+those and other predicates.
+
+Currently, the liveness analysis can have a stack overflow on large enough
+programs, as it is using the built in List type. A port to a more efficient data structure
+is in progress, but was not ready in time for today's handin.
